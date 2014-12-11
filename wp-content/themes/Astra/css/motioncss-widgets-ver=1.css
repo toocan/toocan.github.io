@@ -762,7 +762,7 @@
 					float: left;
 					width: 32px;
 					height: 32px;
-					background: url("http://192.168.100.10/wp-content/themes/Astra/css/w-files-icons.png") no-repeat 0 0;
+					background: url("/wp-content/themes/Astra/css/w-files-icons.png") no-repeat 0 0;
 					}
 				.w-files-file-title {
 					display: block;
