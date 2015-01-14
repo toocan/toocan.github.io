@@ -15,20 +15,23 @@ jQuery(function() {
 
     var
       // configuration
-      recipients = ['info@toocan.biz'],
-      subject = 'Contact Request toocan.biz '
+      recipients = ['info@toocan.biz']
       ;
     
-    // aggregate all fields from the form and add the values to the mail’s text
     var
       $form = jQuery(e.currentTarget),
-      $fields = $form.find('textarea,input,select'),
-      text = ''
+      text = 
+        $form.find('#contact_message').val() + "\r\n\r\n" +
+        "Name: " + $form.find('#contact_name').val() + "\r\n" +
+        "E-Mail: " + $form.find('#contact_email').val() + "\r\n" +
+        "Telefon: " + $form.find('#contact_phone').val()
       ;
-    $fields.each(function(index, input) {
-      var $input = jQuery(input);
-      text += "# " + $input.attr('name') + "\r\n" + $input.val().trim() + "\r\n\r\n";
-    });
+
+    // set subject language dependend
+    var subject = 'Contact Request toocan.biz';
+    if ($form.find('[name="language"]').val() === 'de') {
+      subject = 'Kontaktanfrage von toocan.biz';
+    }
 
     // compose the url 
     var url = "mailto:" + recipients.join(',') + "?" + 
